@@ -12,7 +12,7 @@
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 	<mvc:annotation-driven/>
-	<mvc:resources location="/resources/" mapping="/resources/**"/>
+	<mvc:resources location="/resources/" mapping="/resources/**"/> 
 	<context:component-scan base-package="cn.zgc.cms.controller"/>
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -20,10 +20,10 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	
-	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+ 	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
-				<prop key="org.konghao.cms.model.CmsException">error</prop>
+				<prop key="cn.zg.cms.model.CmsException">error</prop>
 			</props>
 		</property>
 	</bean>
