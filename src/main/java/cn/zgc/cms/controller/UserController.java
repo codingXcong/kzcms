@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.zgc.cms.model.Pager;
 import cn.zgc.cms.model.User;
@@ -21,4 +22,11 @@ public class UserController {
 		model.addAttribute("datas",users);
 		return "user/list";
 	}
+	
+	@RequestMapping(value="/add",method=RequestMethod.GET)
+	public String add(Model model) {
+		
+		return "user/add";
+	}
+	
 }
