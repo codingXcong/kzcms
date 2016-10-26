@@ -10,6 +10,7 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.transform.Transformers;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.zgc.cms.dao.IBasicHibernateDao;
 import cn.zgc.cms.model.Pager;
@@ -17,7 +18,7 @@ import cn.zgc.cms.util.SystemContext;
 
 public class BasicHibernateDaoImpl<T> implements IBasicHibernateDao<T> {
 
-	// TODO 加入注入的注解
+	@Autowired
 	private SessionFactory sessionFactory;
 	// 表示泛型的class对象
 	private Class<?> clazz;
