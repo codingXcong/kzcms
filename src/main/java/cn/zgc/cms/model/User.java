@@ -14,32 +14,32 @@ import org.hibernate.validator.constraints.Email;
 public class User {
 	private int id;
 	/**
-	 * ÓÃ»§µÇÂ¼Ãû³Æ
+	 * ç”¨æˆ·ç™»å½•åç§°
 	 */
 	private String username;
 	/**
-	 * ÓÃ»§µÇÂ¼ÃÜÂë
+	 * ç”¨æˆ·ç™»å½•å¯†ç 
 	 */
 	private String password;
 	/**
-	 * ÓÃ»§µÄÖĞÎÄÃû³Æ
+	 * ç”¨æˆ·çš„ä¸­æ–‡åç§°
 	 */
 	private String nickname;
 	/**
-	 * ÓÃ»§µÄÓÊ¼ş
+	 * ç”¨æˆ·çš„é‚®ä»¶
 	 */
 	private String email;
 	/**
-	 * ÓÃ»§µÄÁªÏµµç»°
+	 * ç”¨æˆ·çš„è”ç³»ç”µè¯
 	 */
 	private String phone;
 	/**
-	 * ÓÃ»§µÄ×´Ì¬£º0±íÊ¾Í£ÓÃ£¬1±íÊ¾ÆôÓÃ
+	 * ç”¨æˆ·çš„çŠ¶æ€ï¼š0è¡¨ç¤ºåœç”¨ï¼Œ1è¡¨ç¤ºå¯ç”¨
 	 */
 	private int status;
 	
 	/**
-	 * ´´½¨Ê±¼ä
+	 * åˆ›å»ºæ—¶é—´
 	 */
 	private Date createDate;
 	
@@ -67,7 +67,7 @@ public class User {
 		this.id = id;
 	}
 	
-	@NotNull(message="ÓÃ»§Ãû²»ÄÜÎª¿Õ")
+	@NotNull(message="ç”¨æˆ·åä¸èƒ½ä¸ºç©º")
 	public String getUsername() {
 		return username;
 	}
@@ -75,7 +75,7 @@ public class User {
 		this.username = username;
 	}
 	
-	@NotNull(message="ÓÃ»§ÃÜÂë²»ÄÜÎª¿Õ")
+	@NotNull(message="ç”¨æˆ·å¯†ç ä¸èƒ½ä¸ºç©º")
 	public String getPassword() {
 		return password;
 	}
@@ -89,7 +89,7 @@ public class User {
 		this.nickname = nickname;
 	}
 	
-	@Email(message="ÓÊ¼ş¸ñÊ½²»ÕıÈ·")
+	@Email(message="é‚®ä»¶æ ¼å¼ä¸æ­£ç¡®")
 	public String getEmail() {
 		return email;
 	}
