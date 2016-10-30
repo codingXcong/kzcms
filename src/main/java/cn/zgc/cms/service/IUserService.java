@@ -1,5 +1,9 @@
 package cn.zgc.cms.service;
+import java.util.List;
+
+import cn.zgc.cms.model.Group;
 import cn.zgc.cms.model.Pager;
+import cn.zgc.cms.model.Role;
 import cn.zgc.cms.model.User;
 public interface IUserService {
 	/**
@@ -34,5 +38,40 @@ public interface IUserService {
 	 * @param id
 	 */
 	public void updateStatus(int id);
+	
+	/**
+	 * 根据id查询用户信息
+	 * @param id
+	 * @return
+	 */
+	public User load(int id);
+	
+	/**
+	 * 根据用户id查询出该用户的角色ids
+	 * @param id
+	 * @return
+	 */
+	public Integer[] listUserRoleIds(int id);
+
+	/**
+	 * 根据用户id查询出该用户的用户组ids
+	 * @param id 用户id
+	 * @return
+	 */
+	public Integer[] listUserGroupIds(int id);
+	
+	/**
+	 * 获取用户角色
+	 * @param id
+	 * @return
+	 */
+	public List<Role> listUserRoles(int id);
+	
+	/**
+	 * 获取用户 组
+	 * @param id
+	 * @return
+	 */
+	public List<Group> listUserGroups(int id);
 	
 }

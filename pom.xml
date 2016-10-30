@@ -97,7 +97,7 @@
 				</configuration> 
 			</plugin>
 			<!-- "警告： 编码 GBK 的不可映射字符”的解决方法 -->
-			<!-- <plugin>  
+			<plugin>  
                 <groupId>org.apache.maven.plugins</groupId>  
                 <artifactId>maven-compiler-plugin</artifactId>  
                 <version>3.0</version>  
@@ -106,7 +106,7 @@
                     <source>1.7</source>  
                     <target>1.7</target>  
                 </configuration>  
-            </plugin> -->  
+            </plugin>  
 		</plugins>
 	</build>
 </project>

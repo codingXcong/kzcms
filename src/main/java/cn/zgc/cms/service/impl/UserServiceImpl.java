@@ -1,12 +1,15 @@
 package cn.zgc.cms.service.impl;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.zgc.cms.dao.IUserDao;
 import cn.zgc.cms.model.CmsException;
+import cn.zgc.cms.model.Group;
 import cn.zgc.cms.model.Pager;
+import cn.zgc.cms.model.Role;
 import cn.zgc.cms.model.User;
 import cn.zgc.cms.service.IUserService;
 @Service
@@ -51,6 +54,36 @@ public class UserServiceImpl implements IUserService{
 	public void updateStatus(int id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	public User load(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Integer[] listUserRoleIds(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Integer[] listUserGroupIds(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public List<Role> listUserRoles(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public List<Group> listUserGroups(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
