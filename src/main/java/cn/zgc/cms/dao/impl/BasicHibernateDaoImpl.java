@@ -52,7 +52,7 @@ public class BasicHibernateDaoImpl<T> implements IBasicHibernateDao<T> {
 	}
 
 	
-	public void delete(long id) {
+	public void delete(int id) {
 		getSession().delete(this.getByPk(id));
 	}
 
@@ -62,7 +62,7 @@ public class BasicHibernateDaoImpl<T> implements IBasicHibernateDao<T> {
 	}
 
 	
-	public T getByPk(long id) {
+	public T getByPk(Integer id) {
 		T t = (T) getSession().load(getClazz(), id);
 		return t;
 

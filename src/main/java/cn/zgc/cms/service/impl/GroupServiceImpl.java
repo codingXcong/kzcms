@@ -18,8 +18,7 @@ public class GroupServiceImpl implements IGroupService{
 	
 	
 	public List<Group> listGroup() {
-		// TODO Auto-generated method stub
-		return null;
+		return groupDao.listGroup();
 	}
 	
 	

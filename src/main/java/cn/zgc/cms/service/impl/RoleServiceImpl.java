@@ -18,8 +18,7 @@ public class RoleServiceImpl implements IRoleService{
 	private IUserDao userDao;
 	
 	public List<Role> listRole() {
-		// TODO Auto-generated method stub
-		return null;
+		return roleDao.listRole();
 	}
 	
 }

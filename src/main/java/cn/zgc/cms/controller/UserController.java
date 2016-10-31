@@ -45,9 +45,10 @@ public class UserController {
 	public String add(Model model,@Valid UserDto userDto,BindingResult br) {
 		if(br.hasErrors()){
 			initAddUser(model);
-			return "redirect:/admin/user/add";
+			return "user/add";
 		}
-		return "user/users";
+		userService.add(userDto.getUser(), userDto.getRoleIds(), userDto.getGroupIds());
+		return "redirect:/admin/user/users";
 	}
 	
 	@RequestMapping(value="/update/{id}",method=RequestMethod.GET)

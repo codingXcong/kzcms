@@ -20,7 +20,7 @@ public interface IBasicHibernateDao<T> {
 	 * 删除对象
 	 * @param id
 	 */
-	public void delete(long id);
+	public void delete(int id);
 	/**
 	 * 更新对象
 	 * @param newEntity
@@ -31,7 +31,7 @@ public interface IBasicHibernateDao<T> {
 	 * @param id 主键
 	 * @return
 	 */
-	public T getByPk(long id);
+	public T getByPk(Integer id);
 	
 	/**
 	 * 查询列表--不分页

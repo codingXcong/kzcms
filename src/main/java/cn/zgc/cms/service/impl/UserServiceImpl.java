@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.zgc.cms.dao.IGroupDao;
+import cn.zgc.cms.dao.IRoleDao;
 import cn.zgc.cms.dao.IUserDao;
+import cn.zgc.cms.dao.impl.RoleDao;
 import cn.zgc.cms.model.CmsException;
 import cn.zgc.cms.model.Group;
 import cn.zgc.cms.model.Pager;
@@ -16,6 +19,10 @@ import cn.zgc.cms.service.IUserService;
 public class UserServiceImpl implements IUserService{
 	@Autowired
 	private IUserDao userDao;
+	@Autowired
+	private IRoleDao roleDao;
+	@Autowired
+	private IGroupDao groupDao;
 	
 	
 	public Pager<User> findUser() {
@@ -30,12 +37,29 @@ public class UserServiceImpl implements IUserService{
 		userDao.add(user);
 		//添加角色对象
 		for(Integer rid:rids) {
-			//this.addUserRole(user, rid);
+			this.addUserRole(user, rid);
 		}
 		//添加用户组对象
 		for(Integer gid:gids) {
-			//addUserGroup(user, gid);
+			this.addUserGroup(user, gid);
 		}
+	}
+
+
+	private void addUserGroup(User user, Integer gid) {
+		Group group = groupDao.getByPk(gid);
+		if(group == null){
+			throw new CmsException("添加的用户组不存在");
+		}
+		userDao.addUserGroup(user, group);
+	}
+
+
+	private void addUserRole(User user, Integer rid) {
+		Role role = roleDao.getByPk(rid);
+		if(role == null)
+			throw new CmsException("添加的角色不存在");
+		userDao.addUserRole(user, role);
 	}
 
 
