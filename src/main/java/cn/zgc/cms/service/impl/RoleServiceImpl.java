@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import cn.zgc.cms.dao.IRoleDao;
 import cn.zgc.cms.dao.IUserDao;
+import cn.zgc.cms.model.Pager;
 import cn.zgc.cms.model.Role;
 import cn.zgc.cms.service.IRoleService;
 
@@ -19,6 +20,10 @@ public class RoleServiceImpl implements IRoleService{
 	
 	public List<Role> listRole() {
 		return roleDao.listRole();
+	}
+
+	public Pager<Role> findRole() {
+		return roleDao.findRole();
 	}
 	
 }

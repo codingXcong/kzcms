@@ -25,7 +25,7 @@
 		</tr>
 		</thead>
 		<tbody>
-		<c:forEach items="${roles}" var="role">
+		<c:forEach items="${datas.datas}" var="role">
 			<tr>
 				<td>${role.id }&nbsp;</td>
 				<td><a href="${role.id }" class="list_link">${role.name }</a></td>
