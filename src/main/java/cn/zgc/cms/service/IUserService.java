@@ -74,4 +74,12 @@ public interface IUserService {
 	 */
 	public List<Group> listUserGroups(int id);
 	
+	/**
+	 * 获取某个用户组下所有的用户
+	 * @param gid
+	 * @return
+	 */
+	public List<User> listGroupUsers(int gid);
+
+	
 }

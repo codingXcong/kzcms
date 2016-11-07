@@ -110,4 +110,10 @@ public class UserServiceImpl implements IUserService{
 		return null;
 	}
 
+
+	public List<User> listGroupUsers(int gid) {
+		String hql = "select ug.user from UserGroup ug where ug.group.id=?";
+		return userDao.list(hql, gid);
+	}
+
 }

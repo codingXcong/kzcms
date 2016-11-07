@@ -25,10 +25,10 @@ $(function(){
 		<a href="<%=request.getContextPath() %>/admin/user/users" target="content">用户信息管理</a>
 	</li>
 	<li class="navChild">
-		<a href="<%=request.getContextPath() %>/admin/group/groups" target="content">用户组管理</a>
+		<a href="<%=request.getContextPath() %>/admin/group/list" target="content">用户组管理</a>
 	</li>
 	<li class="navChild">
-		<a href="<%=request.getContextPath() %>/admin/role/roles" target="content">用户角色管理</a>
+		<a href="<%=request.getContextPath() %>/admin/role/list" target="content">用户角色管理</a>
 	</li>
 </ul>
 
