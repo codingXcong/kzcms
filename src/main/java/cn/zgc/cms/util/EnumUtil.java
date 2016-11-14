@@ -82,7 +82,7 @@ public class EnumUtil {
 			Enum[] enums = clz.getEnumConstants();
 			Map<String,String> map = new HashMap<String,String>();
 			for(Enum en:enums) {
-				map.put(en.name(),(String) PropertyUtils.getProperty(en, propName));
+				map.put(en.name(),(String) PropertyUtils.getProperty(en, propName)); 
 			}
 			return map;
 		} catch (IllegalAccessException e) {
