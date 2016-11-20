@@ -18,6 +18,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name="t_channel")
 public class Channel {
+	public static final String ROOT_NAME = "网站系统栏目";
+	public static final int ROOT_ID = 0;
+	
 	/**
 	 * 栏目的主键
 	 */

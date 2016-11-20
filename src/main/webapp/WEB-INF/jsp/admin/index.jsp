@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>欢迎使用附中网站后台管理程序</title>
+<title>欢迎使用CMS后台管理程序</title>
 </head>
 <frameset cols="*,1035,*"  border="0" frameborder="0" frameSpacing="0" scrolling="false">
 	<frame src="<%=request.getContextPath() %>/resources/admin/background.html" frameSpacing="0">

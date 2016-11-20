@@ -3,13 +3,8 @@ package cn.zgc.cms.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import cn.zgc.cms.model.Group;
 import cn.zgc.cms.model.Pager;
 import cn.zgc.cms.model.Role;
 import cn.zgc.cms.service.IRoleService;
@@ -20,6 +15,7 @@ import cn.zgc.cms.service.IUserService;
 public class RoleController {
 	@Autowired
 	private IRoleService roleService;
+	@SuppressWarnings("unused")
 	@Autowired
 	private IUserService userService;
 	

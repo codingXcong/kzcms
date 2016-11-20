@@ -1,4 +1,51 @@
+/* 自定义插件 */
 (function($){
+	
+	//ztree简单封装的插件
+	$.fn.mytree = function(opts){
+		var setting = $.extend({
+			data:{
+				simpleData:{
+					enable: true,
+					idKey: "id",
+					pIdKey: "pid",
+					rootPId: -1
+				}
+			},
+			view: {
+				dblClickExpand: false,
+				selectedMulti: false
+			},
+			async: {
+				enable: true,
+				url: opts?(opts.url||"treeAll"):"treeAll"
+				
+			},
+			mine: {
+				listChild:1,
+				srcElement:"#cc"
+			},
+			callback:{
+				onAsyncSuccess:function(){
+					if(opts.mine.expandAll)
+						t.expandAll(true);
+				}
+			}
+			
+		},opts||{});
+		
+		var _mine = setting.mine;
+		var t = $.fn.zTree.init($(this), setting);
+		if(_mine.listChild) {
+			t.setting.callback.onClick = listChild;
+		}
+		
+		function listChild(event,treeId,treeNode) {
+			$(_mine.srcElement).attr("src","channels/"+treeNode.id);
+		}
+	}
+	
+	// 左侧折叠菜单的插件
 	$.fn.myaccordion = function(opts) {
 		var settings = $.extend({
 			selectedClz:"navSelected",
@@ -32,6 +79,7 @@
 		});
 	};
 	
+	// alert的插件
 	$.fn.confirmOperator = function(opts) {
 		var settings = $.extend({
 			msg:"该操作不可逆，确定进行该操作吗？",

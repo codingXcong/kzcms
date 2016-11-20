@@ -2,10 +2,16 @@ package cn.zgc.cms.dao.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import cn.zgc.cms.dao.IChannelDao;
 import cn.zgc.cms.model.Channel;
 import cn.zgc.cms.model.ChannelTree;
-
+/**
+ * 渠道dao
+ * @author gc
+ */
+@Repository
 public class ChannelDao extends BasicHibernateDaoImpl<Channel> implements IChannelDao {
 	@Override
 	public List<Channel> listByParent(Integer pid) {
