@@ -3,7 +3,7 @@ package cn.zgc.cms.model;
  * 栏目树对象
  * @author gczhang
  */
-public class ChannelTree {
+public class ChannelTree{
 	private Integer id;
 	private String name;
 	private Integer pid;
