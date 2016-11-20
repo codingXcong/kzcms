@@ -85,18 +85,18 @@ public interface IBasicHibernateDao<T> {
 	 * @param hasEntity 该对象是否是Hibernate所管理的实体，如果不是需要使用setResultTransform来查询
 	 * @return
 	 */
-	public List<T> listBySQL(String sql,Object[] params,Class<T> clzss,boolean hasEntity);
-	public List<T> listBySQL(String sql,Object param,Class<T> clzss,boolean hasEntity);
-	public List<T> listBySQL(String sql,Class<T> clzss,boolean hasEntity);
-	public List<T> listBySQL(String sql,Object[] params,Map<String,Object> alias,Class<T> clzss,boolean hasEntity);
-	public List<T> listBySQL(String sql,Map<String,Object> alias,Class<T> clzss,boolean hasEntity);
+	public <N> List<N> listBySQL(String sql,Object[] params,Class<N> clzss,boolean hasEntity);
+	public <N> List<N> listBySQL(String sql,Object param,Class<N> clzss,boolean hasEntity);
+	public <N> List<N> listBySQL(String sql,Class<N> clzss,boolean hasEntity);
+	public <N> List<N> listBySQL(String sql,Object[] params,Map<String,Object> alias,Class<N> clzss,boolean hasEntity);
+	public <N> List<N> listBySQL(String sql,Map<String,Object> alias,Class<N> clzss,boolean hasEntity);
 	
 	
-	public Pager<T> findBySQL(String sql,Object[] params,Class<T> clzss,boolean hasEntity);
-	public Pager<T> findBySQL(String sql,Object param,Class<T> clzss,boolean hasEntity);
-	public Pager<T> findBySQL(String sql,Class<T> clzss,boolean hasEntity);
-	public Pager<T> findBySQL(String sql,Object[] params,Map<String,Object> alias,Class<T> clzss,boolean hasEntity);
-	public Pager<T> findBySQL(String sql,Map<String,Object> alias,Class<T> clzss,boolean hasEntity);
+	public <N> Pager<N> findBySQL(String sql,Object[] params,Class<N> clzss,boolean hasEntity);
+	public <N> Pager<N> findBySQL(String sql,Object param,Class<N> clzss,boolean hasEntity);
+	public <N> Pager<N> findBySQL(String sql,Class<N> clzss,boolean hasEntity);
+	public <N> Pager<N> findBySQL(String sql,Object[] params,Map<String,Object> alias,Class<N> clzss,boolean hasEntity);
+	public <N> Pager<N> findBySQL(String sql,Map<String,Object> alias,Class<N> clzss,boolean hasEntity);
 	
 	
 }

@@ -258,22 +258,22 @@ public class BasicHibernateDaoImpl<T> implements IBasicHibernateDao<T> {
 	}
 
 	
-	public List<T> listBySQL(String sql, Object[] params, Class<T> clazz, boolean hasEntity) {
+	public <N> List<N> listBySQL(String sql, Object[] params, Class<N> clazz, boolean hasEntity) {
 		return this.listBySQL(sql, params, null, clazz, hasEntity);
 	}
 
 	
-	public List<T> listBySQL(String sql, Object param, Class<T> clazz, boolean hasEntity) {
+	public <N> List<N> listBySQL(String sql, Object param, Class<N> clazz, boolean hasEntity) {
 		return this.listBySQL(sql, new Object[]{param}, clazz, hasEntity);
 	}
 
 	
-	public List<T> listBySQL(String sql, Class<T> clazz, boolean hasEntity) {
+	public <N> List<N> listBySQL(String sql, Class<N> clazz, boolean hasEntity) {
 		return this.listBySQL(sql, null, null, clazz, hasEntity);
 	}
 	
 	
-	public List<T> listBySQL(String sql, Object[] params, Map<String, Object> alias, Class<T> clazz,
+	public <N> List<N> listBySQL(String sql, Object[] params, Map<String, Object> alias, Class<N> clazz,
 			boolean hasEntity) {
 		sql = addSort(sql);
 		SQLQuery sq = getSession().createSQLQuery(sql);
@@ -287,27 +287,27 @@ public class BasicHibernateDaoImpl<T> implements IBasicHibernateDao<T> {
 	}
 	
 	
-	public List<T> listBySQL(String sql, Map<String, Object> alias, Class<T> clazz, boolean hasEntity) {
+	public <N> List<N> listBySQL(String sql, Map<String, Object> alias, Class<N> clazz, boolean hasEntity) {
 		return this.listBySQL(sql, null, alias, clazz, hasEntity);
 	}
 
 	
-	public Pager<T> findBySQL(String sql, Object[] params, Class<T> clazz, boolean hasEntity) {
+	public <N> Pager<N> findBySQL(String sql, Object[] params, Class<N> clazz, boolean hasEntity) {
 		return this.findBySQL(sql, params, null, clazz, hasEntity);
 	}
 
 	
-	public Pager<T> findBySQL(String sql, Object param, Class<T> clazz, boolean hasEntity) {
+	public <N> Pager<N> findBySQL(String sql, Object param, Class<N> clazz, boolean hasEntity) {
 		return this.findBySQL(sql, new Object[]{param}, clazz, hasEntity);
 	}
 	
 	
-	public Pager<T> findBySQL(String sql, Class<T> clazz, boolean hasEntity) {
+	public <N> Pager<N> findBySQL(String sql, Class<N> clazz, boolean hasEntity) {
 		return this.findBySQL(sql, null, null, clazz, hasEntity);
 	}
 	
 	
-	public Pager<T> findBySQL(String sql, Object[] params, Map<String, Object> alias, Class<T> clazz,
+	public <N> Pager<N> findBySQL(String sql, Object[] params, Map<String, Object> alias, Class<N> clazz,
 			boolean hasEntity) {
 		sql = addSort(sql);
 		String countHql = getCountHql(sql,false);
@@ -317,14 +317,14 @@ public class BasicHibernateDaoImpl<T> implements IBasicHibernateDao<T> {
 		setAliasParameter(countQuery, alias);
 		setParameter(dataQuery, params);
 		setParameter(countQuery, params);
-		Pager<T> Pagers = new Pager<T>();
+		Pager<N> Pagers = new Pager<N>();
 		setPagers(dataQuery, Pagers);
 		if(hasEntity) {
 			dataQuery.addEntity(clazz);
 		} else {
 			dataQuery.setResultTransformer(Transformers.aliasToBean(clazz));
 		}
-		List<T> datas = dataQuery.list();
+		List<N> datas = dataQuery.list();
 		Pagers.setDatas(datas);
 		long total = (Long) countQuery.uniqueResult();
 		Pagers.setTotal(total);
@@ -332,7 +332,7 @@ public class BasicHibernateDaoImpl<T> implements IBasicHibernateDao<T> {
 	}
 	
 	
-	public Pager<T> findBySQL(String sql, Map<String, Object> alias, Class<T> clazz, boolean hasEntity) {
+	public <N> Pager<N> findBySQL(String sql, Map<String, Object> alias, Class<N> clazz, boolean hasEntity) {
 		return this.findBySQL(sql, null, alias, clazz, hasEntity);
 	}
 
