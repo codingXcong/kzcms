@@ -9,6 +9,7 @@ import cn.zgc.cms.dao.IChannelDao;
 import cn.zgc.cms.model.Channel;
 import cn.zgc.cms.model.ChannelTree;
 import cn.zgc.cms.model.ChannelType;
+import cn.zgc.cms.model.CmsException;
 import cn.zgc.cms.service.IChannelService;
 @Service
 public class ChannelServiceImpl implements IChannelService {
@@ -17,8 +18,14 @@ public class ChannelServiceImpl implements IChannelService {
 	
 	@Override
 	public void add(Channel channel, Integer pid) {
-		// TODO Auto-generated method stub
-
+		if(pid!=null&&pid>0){
+			Channel parent = channelDao.getByPk(pid);
+			if(parent==null) throw new CmsException("待添加栏目的父栏目为空");
+			channel.setParent(parent);
+		}
+		int orders = channelDao.getMaxOrderByParent(pid);
+		channel.setOrders(orders);
+		channelDao.add(channel);
 	}
 
 	@Override
@@ -41,8 +48,7 @@ public class ChannelServiceImpl implements IChannelService {
 
 	@Override
 	public Channel load(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return channelDao.getByPk(id);
 	}
 
 	@Override

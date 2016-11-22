@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.zgc.cms.dto.TreeDto;
 import cn.zgc.cms.model.Channel;
 import cn.zgc.cms.model.ChannelTree;
+import cn.zgc.cms.model.ChannelType;
 import cn.zgc.cms.service.IChannelService;
+import cn.zgc.cms.util.EnumUtil;
 
 @Controller
 @RequestMapping("/admin/channel")
@@ -61,6 +63,26 @@ public class ChannelController {
 		model.addAttribute("channels",channelService.listByParent(pid));
 		return "channel/list_child";
 	}
-	
-	
+	@RequestMapping(value="/add/{pid}",method=RequestMethod.GET)
+	public String add(@PathVariable Integer pid,Model model){
+		initAdd(pid,model);
+		// 页面上spring标签需要
+		//<sf:form method="post" modelAttribute="channel" id="addForm">
+		model.addAttribute(new Channel());
+		return "channel/add";
+	}
+
+	private void initAdd(Integer pid, Model model) {
+		if(pid==null) pid=0;
+		Channel pc = null;
+		if(pid==0){
+			pc = new Channel();
+			pc.setId(Channel.ROOT_ID);
+			pc.setName(Channel.ROOT_NAME);
+		}else {
+			pc = channelService.load(pid);
+		}
+		model.addAttribute("pc", pc);
+		model.addAttribute("types", EnumUtil.enumProp2Map(ChannelType.class, "name"));
+	}
 }

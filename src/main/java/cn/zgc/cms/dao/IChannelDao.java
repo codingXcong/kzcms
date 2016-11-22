@@ -31,5 +31,4 @@ public interface IChannelDao extends IBasicHibernateDao<Channel>{
 	 */
 	public List<ChannelTree> generateTreeByParent(Integer pid);
 	
-
 }
