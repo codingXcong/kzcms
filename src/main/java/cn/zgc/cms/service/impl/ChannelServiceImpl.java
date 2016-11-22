@@ -30,14 +30,20 @@ public class ChannelServiceImpl implements IChannelService {
 
 	@Override
 	public void update(Channel channel) {
-		// TODO Auto-generated method stub
-
+		channelDao.update(channel);
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-
+		//1、需要判断是否存在子栏目
+		List<Channel> cs = channelDao.listByParent(id);
+		if(cs!=null&&cs.size()>0) throw new CmsException("要删除的栏目还有子栏目，无法删除");
+		//2、需要判断是否存在文章
+		//TODO
+		//3、需要删除和组的关联关系
+		//channelDao.deleteChannelGroups(id);
+		
+		channelDao.delete(id);
 	}
 
 	@Override

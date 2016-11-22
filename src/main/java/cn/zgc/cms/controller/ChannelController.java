@@ -7,6 +7,7 @@ import org.jboss.logging.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -63,6 +64,7 @@ public class ChannelController {
 		model.addAttribute("channels",channelService.listByParent(pid));
 		return "channel/list_child";
 	}
+	
 	@RequestMapping(value="/add/{pid}",method=RequestMethod.GET)
 	public String add(@PathVariable Integer pid,Model model){
 		initAdd(pid,model);
@@ -71,7 +73,17 @@ public class ChannelController {
 		model.addAttribute(new Channel());
 		return "channel/add";
 	}
-
+	
+	@RequestMapping(value="/add/{pid}",method=RequestMethod.POST)
+	public String add(@PathVariable Integer pid,Channel channel,Model model,BindingResult br){
+		if(br.hasErrors()){
+			initAdd(pid,model);
+			return "channel/add";
+		}
+		channelService.add(channel, pid);
+		return "redirect:/admin/channel/channels/"+pid+"?refresh=1";
+	}
+	
 	private void initAdd(Integer pid, Model model) {
 		if(pid==null) pid=0;
 		Channel pc = null;
@@ -85,4 +97,39 @@ public class ChannelController {
 		model.addAttribute("pc", pc);
 		model.addAttribute("types", EnumUtil.enumProp2Map(ChannelType.class, "name"));
 	}
+	
+	@RequestMapping("/delete/{pid}/{id}")
+	public String delete(Model model,@PathVariable Integer pid,@PathVariable Integer id){
+		channelService.delete(id);
+		return "redirect:/admin/channel/channels/"+pid+"?refresh=1";
+	}
+	
+	@RequestMapping(value="/update/{id}",method=RequestMethod.GET)
+	public String update(@PathVariable Integer id,Model model){
+		Channel c = channelService.load(id);
+		model.addAttribute("channel", c);
+		Channel pc = null;
+		if(c.getParent()==null) {
+			pc = new Channel();
+			pc.setId(Channel.ROOT_ID);
+			pc.setName(Channel.ROOT_NAME);
+		} else {
+			pc = c.getParent();
+		}
+		model.addAttribute("pc",pc);
+		model.addAttribute("types", EnumUtil.enumProp2Map(ChannelType.class, "name"));
+		return "channel/update";
+	}
+	
+	@RequestMapping(value="/update/{id}",method=RequestMethod.POST)
+	public String update(@PathVariable Integer id,Channel channel,Model model,BindingResult br){
+		if(br.hasErrors()){
+			return "channel/update";
+		}
+		Channel tc = channelService.load(id);
+		int pid = 0;
+		
+		return "redirect:/admin/channel/channels/"+pid+"?refresh=1";
+	}
+	
 }
