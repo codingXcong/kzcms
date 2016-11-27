@@ -17,10 +17,27 @@
 
 <script type="text/javascript">
 $(function(){
+	/*
+	sortable 可拖动table demo
+	$(".listTable tbody").sortable({
+		axis:"y",
+		helper:function(e,ele) {
+			console.info("e："+e);
+			console.info("ele:"+ele);
+			//原始元素的td对象
+			var _original = ele.children();
+			var _helper = ele.clone();
+			_helper.children().each(function(index){
+				$(this).width(_original.eq(index).width());
+				$(this).css("background","#4B89BC");
+			});
+			return _helper; 
+		} 
+	}); */
 	if($("#refresh").val()=="1") {
-		parent.refreshTree();
+		parent.refreshTree(); 
 	}
-	$(".listTable").mysorttable();
+	$(".listTable").mysorttable();  
 });
 </script>
 </head>
