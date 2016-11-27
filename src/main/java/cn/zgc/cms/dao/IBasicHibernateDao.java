@@ -31,7 +31,7 @@ public interface IBasicHibernateDao<T> {
 	 * @param id 主键
 	 * @return
 	 */
-	public T getByPk(Integer id);
+	public T getByPk(int id);
 	
 	/**
 	 * 查询列表--不分页

@@ -33,11 +33,19 @@ public class ChannelDao extends BasicHibernateDaoImpl<Channel> implements IChann
 		Object obj = this.queryObject(hql);
 		return obj==null?0:(int)obj;
 	}
+	
+	public static void initTreeNode(List<ChannelTree> cts) {
+		cts.add(0, new ChannelTree(Channel.ROOT_ID, Channel.ROOT_NAME, -1));
+		for(ChannelTree ct : cts){
+			if(ct.getPid()==null) ct.setPid(0); 
+		}
+	}
 
 	@Override
 	public List<ChannelTree> generateTree() {
 		String sql = "select id,name,pid from t_channel order by orders";
 		List<ChannelTree> cTree = this.listBySQL(sql,ChannelTree.class,false);
+		initTreeNode(cTree);
 		return cTree;
 	}
 

@@ -62,8 +62,10 @@ public class BasicHibernateDaoImpl<T> implements IBasicHibernateDao<T> {
 	}
 
 	
-	public T getByPk(Integer id) {
-		T t = (T) getSession().load(getClazz(), id);
+	public T getByPk(int id) {
+		// 这里用load无法加载出来（场景之一：删除栏目）
+		//T t = (T) getSession().load(getClazz(), id);
+		T t = (T) getSession().get(getClazz(), id);
 		return t;
 
 	}

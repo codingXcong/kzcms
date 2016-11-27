@@ -64,7 +64,8 @@ public class ChannelServiceImpl implements IChannelService {
 
 	@Override
 	public List<ChannelTree> generateTree() {
-		return channelDao.generateTree();
+		List<ChannelTree> channels = channelDao.generateTree();
+		return channels;
 	}
 
 	@Override

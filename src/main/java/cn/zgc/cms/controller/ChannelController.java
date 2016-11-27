@@ -128,7 +128,18 @@ public class ChannelController {
 		}
 		Channel tc = channelService.load(id);
 		int pid = 0;
-		
+		if(tc.getParent()!=null) pid = tc.getParent().getId();
+		tc.setCustomLink(channel.getCustomLink());
+		tc.setCustomLinkUrl(channel.getCustomLinkUrl());
+		tc.setIsIndex(channel.getIsIndex());
+		tc.setIsTopNav(channel.getIsTopNav());
+		tc.setName(channel.getName());
+		tc.setNavOrder(channel.getNavOrder());
+		tc.setOrders(channel.getOrders());
+		tc.setRecommend(channel.getRecommend());
+		tc.setStatus(channel.getStatus());
+		tc.setType(channel.getType());
+		channelService.update(tc);
 		return "redirect:/admin/channel/channels/"+pid+"?refresh=1";
 	}
 	

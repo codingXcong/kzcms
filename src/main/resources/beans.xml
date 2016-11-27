@@ -11,6 +11,9 @@
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	
+	<context:component-scan base-package="cn.zgc.cms.*">
+		<context:exclude-filter type="regex" expression=".*controller$"/>
+	</context:component-scan>
 	
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
