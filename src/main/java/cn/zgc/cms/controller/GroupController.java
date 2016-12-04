@@ -1,5 +1,7 @@
 package cn.zgc.cms.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +10,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.zgc.cms.model.ChannelTree;
 import cn.zgc.cms.model.Group;
 import cn.zgc.cms.service.IGroupService;
 import cn.zgc.cms.service.IUserService;
@@ -77,5 +81,24 @@ public class GroupController {
 	public String clearGroupUsers(@PathVariable int id){
 		groupService.deleteGroupUsers(id);
 		return "redirect:/admin/group/list";
+	}
+	
+	@RequestMapping("/getChannels/{gid}")
+	public String getChannels(){
+		return "/group/getChannel";
+	}
+	
+	@RequestMapping("/setChannels/{gid}")
+	public String setChannels(@PathVariable int gid,Model model) {
+		model.addAttribute(groupService.load(gid));
+		model.addAttribute("cids",groupService.listGroupChannelIds(gid));
+		return "/group/setChannel";
+	}
+	
+	@RequestMapping("/treeAll/{gid}")
+	@ResponseBody
+	public List<ChannelTree> genChannelTree(@PathVariable int gid){
+		List<ChannelTree> channelTree = groupService.generateGroupChannelTree(gid);
+		return channelTree;
 	}
 }

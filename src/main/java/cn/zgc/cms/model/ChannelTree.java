@@ -1,6 +1,6 @@
 package cn.zgc.cms.model;
 /**
- * 栏目树对象
+ * 栏目树对象,用于ztree的封装
  * @author gczhang
  */
 public class ChannelTree{

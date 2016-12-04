@@ -34,8 +34,8 @@
 					<a href="delete/${group.id }" class="list_op delete">删除</a>
 					<a href="update/${group.id }" class="list_op">更新</a>
 					<a href="clearUsers/${group.id }" class="list_op delete">清空用户</a>
-					<a href="<%=request.getContextPath() %>/admin/channel/userchannels/${user.id }" class="list_op">查询管理栏目</a>
-					<a href="<%=request.getContextPath() %>/admin/channel/userchannels/${user.id }" class="list_op">设置管理栏目</a>
+					<a href="<%=request.getContextPath() %>/admin/group/getChannels/${group.id }" class="list_op">查询管理栏目</a>
+					<a href="<%=request.getContextPath() %>/admin/group/setChannels/${group.id }" class="list_op">设置管理栏目</a>
 				&nbsp;
 				</td>
 			</tr>
