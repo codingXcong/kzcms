@@ -15,11 +15,11 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/dwr/interface/dwrService.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/admin/setChannel.js"></script>
 <script type="text/javascript">
-$(function(){
+/* $(function(){
 	mt = $("#tree").mytree({
 		url:$("#treePath").val()+'/'+$("#gid").val()
 	});
-});
+}); */
 </script>
 </head>
 <body>
