@@ -38,7 +38,7 @@ $(function(){
 		alert(msg);
 	}
 	
-	dwr.engine.setErrorHandler(handler);
+	//dwr.engine.setErrorHandler(handler); 
 	
 	function addGroupChannel(cs) {
 		var gid = $("#gid").val();

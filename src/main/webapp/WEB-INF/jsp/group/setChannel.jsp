@@ -11,8 +11,8 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/ztree/jquery.ztree.core-3.5.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/ztree/jquery.ztree.excheck-3.5.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/core/jquery.cms.core.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/dwr/engine.js"></script> 
-<script type="text/javascript" src="<%=request.getContextPath()%>/dwr/interface/dwrService.js"></script>
+<%-- <script type="text/javascript" src="<%=request.getContextPath()%>/dwr/engine.js"></script> 
+<script type="text/javascript" src="<%=request.getContextPath()%>/dwr/interface/dwrService.js"></script> --%>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/admin/setChannel.js"></script>
 <script type="text/javascript">
 /* $(function(){
