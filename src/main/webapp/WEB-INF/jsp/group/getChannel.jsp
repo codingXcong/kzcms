@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/admin/main.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/ztree/zTreeStyle.css"/>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/tree/zjquery.ztree.core-3.5.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/ztree/jquery.ztree.core-3.5.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/core/jquery.cms.core.js"></script>
 <script type="text/javascript">
 $(function(){

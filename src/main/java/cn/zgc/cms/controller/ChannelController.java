@@ -143,4 +143,6 @@ public class ChannelController {
 		return "redirect:/admin/channel/channels/"+pid+"?refresh=1";
 	}
 	
+	
+	
 }

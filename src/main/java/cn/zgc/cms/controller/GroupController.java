@@ -95,10 +95,8 @@ public class GroupController {
 		return "/group/setChannel";
 	}
 	
-	@RequestMapping("/treeAll/{gid}")
-	@ResponseBody
-	public List<ChannelTree> genChannelTree(@PathVariable int gid){
-		List<ChannelTree> channelTree = groupService.generateGroupChannelTree(gid);
-		return channelTree;
+	@RequestMapping("/groupTree/{gid}")
+	public @ResponseBody List<ChannelTree> groupTree(@PathVariable Integer gid) {
+		return groupService.generateGroupChannelTree(gid);
 	}
 }

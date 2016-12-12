@@ -115,6 +115,7 @@
 		function listChild(event,treeId,treeNode) {
 			$(_mine.srcElement).attr("src","channels/"+treeNode.id);
 		}
+		return t; 
 	}
 	
 	// 左侧折叠菜单的插件

@@ -32,7 +32,7 @@
 			<input type="hidden" name="cids" value="${cid }">
 		</c:forEach>
 		<input type="hidden" id="gid" value="${group.id }"/>
-		<input type="hidden" id="treePath" value="<%=request.getContextPath()%>/admin/group/treeAll"/>
+		<input type="hidden" id="treePath" value="<%=request.getContextPath()%>/admin/channel/treeAll"/> 
 		<div style="padding-left:10px;font-size:12px;">当前组名称:${group.name }</div>
 		<div id="tree" class="ztree"></div>
 	</div>
