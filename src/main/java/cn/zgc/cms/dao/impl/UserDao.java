@@ -1,5 +1,7 @@
 package cn.zgc.cms.dao.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import cn.zgc.cms.dao.IUserDao;
@@ -16,16 +18,6 @@ public class UserDao extends BasicHibernateDaoImpl<User> implements IUserDao {
 
 	public Pager<User> findUser() {
 		return this.find("from User");
-	}
-
-	public void add(User user, Integer[] rids, Integer[] gids) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void update(User user, Integer[] rids, Integer[] gids) {
@@ -76,6 +68,42 @@ public class UserDao extends BasicHibernateDaoImpl<User> implements IUserDao {
 		UserGroup userGroup = (UserGroup) this.getSession().createQuery(hql)
 				.setParameter(0, userId).setParameter(1, groupId).uniqueResult();
 		return userGroup;
+	}
+
+	@Override
+	public void deleteUserRole(int uid, int rid) {
+		String hql = "delete form UserRole ur where ur.user.id = ? and ur.role.id = ?";
+		this.updateObject(hql,new Object[]{uid,rid});
+	}
+
+	@Override
+	public void deleteUserGroup(int uid, int gid) {
+		String hql = "delete from UserGroup ug where ug.user.id = ? and ug.group.id = ?";
+		this.updateObject(hql, new Object[]{uid,gid});
+	}
+
+	@Override
+	public void deleteUserGroups(int uid) {
+		String hql = "delete from UserGroup ug where ug.user.id = ?";
+		this.updateObject(hql, uid);
+	}
+
+	@Override
+	public void deleteUserRoles(int uid) {
+		String hql = "delete from UserRole ur where ur.user.id = ?";
+		this.updateObject(hql, uid);
+	}
+
+	@Override
+	public User findByUserName(String username) {
+		String hql = "from User u where u.username = ?";
+		return (User) this.queryObject(hql, username);
+	}
+
+	@Override
+	public List<Role> listUserRoles(int uid) {
+		String hql = "select ur.role from UserRole ur where ur.user.id=?";
+		return this.getSession().createQuery(hql).setParameter(0,uid).list();
 	}
 	
 }

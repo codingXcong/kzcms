@@ -75,7 +75,9 @@ public class Captcha {
 		return sb.toString();
 	}
 	
-	public BufferedImage generateCheckImg(String checkcode) {
+	public BufferedImage generateCheckImg(String checkcode,int w,int h) {
+		this.width = w;
+		this.height = h;
 		//创建一个图片对象
 		BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		//获取图片对象的画笔

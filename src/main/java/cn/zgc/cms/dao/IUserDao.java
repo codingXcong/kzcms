@@ -11,19 +11,6 @@ import cn.zgc.cms.model.User;
 public interface IUserDao extends IBasicHibernateDao<User>{
 	
 	/**
-	 * 添加用户，需要判断用户名是否存在，如果存在抛出异常
-	 * @param user 用户对象
-	 * @param rids 用户的所有角色信息
-	 * @param gids 用户的所有组信息
-	 */
-	public void add(User user,Integer[]rids,Integer[]gids);
-	/**
-	 * 删除用户，注意需要把用户和角色和组的对应关系删除
-	 * 如果用户存在相应的文章不能删除
-	 * @param id
-	 */
-	public void delete(int id);
-	/**
 	 * 用户的更新，如果rids中的角色在用户中已经存在，就不做操作
 	 * 如果rids中的角色在用户中不存在就要添加，如果用户中的角色不存在于rids中需要进行删除
 	 * 对于group而已同样要做这个操作
@@ -62,6 +49,40 @@ public interface IUserDao extends IBasicHibernateDao<User>{
 	 * @param group
 	 */
 	public void addUserGroup(User user,Group group);
+	
+	/**
+	 * 删除用户角色对象
+	 * @param uid
+	 * @param rid
+	 */
+	public void deleteUserRole(int uid,int rid);
+	/**
+	 * 删除用户组对象
+	 * @param uid
+	 * @param gid
+	 */
+	public void deleteUserGroup(int uid,int gid);
+	/**
+	 * 删除某个用户的用户组对象
+	 * @param uid 用户ID
+	 */
+	public void deleteUserGroups(int uid);
+	/**
+	 * 删除某个用户的用户角色对象
+	 * @param uid 用户id
+	 */
+	public void deleteUserRoles(int uid);
+	/**
+	 * 通过用户名查找用户
+	 * @param username
+	 */
+	public User findByUserName(String username);
+	/**
+	 * 列出用户的所有角色信息
+	 * @param uid
+	 * @return
+	 */
+	public List<Role> listUserRoles(int uid);
 	
 	
 }

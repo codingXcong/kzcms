@@ -6,13 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/admin/login.css"/>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/jquery.validate.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/core/jquery.cms.validate.js"></script>
 <title>后台管理登录</title>
 <script type="text/javascript">
-
+ 
 $(function(){
-	$.cms_inc.showDate($("#showDate"));
-	$.cms_validate.loginValidate($("#myForm"));
-	
+	$("#myForm").cmsvalidate();
 });
 function reCheckcode(img) {
 	img.src="drawCode?"+Math.random();
@@ -30,19 +30,20 @@ function reCheckcode(img) {
 		</div>
 		<div id="content">
 			<div id="loginForm">
+			<form method="post" id="myForm" action="login"> 
 					<table cellpadding="0" cellspacing="0" width="380px" id="loginTable">
 						<tr>
 							<td align="right" width="90">登录用户:</td>
-							<td align="left"><sf:input path="username" size="25"/> </td>
+							<td align="left"><input type="text" name="username" size="25"/> </td>
 						</tr>
 						<tr>
 							<td align="right">登录密码:</td>
-							<td align="left"><sf:password path="password" size="25"/></td>
+							<td align="left"><input type="password" name="password" size="25"/></td>
 						</tr>
 						<tr>
 							<td align="right">输入验证码:</td>
 							<td align="left">
-							<input type="text" name="validateCode" id="validateCode" size="15"/>
+							<input type="text" name="checkcode" id="validateCode" size="15"/>
 							${error}
 							</td>
 						</tr>
@@ -58,6 +59,7 @@ function reCheckcode(img) {
 							</td>
 						</tr>
 					</table>
+				</form>
 			</div>
 		</div>
 	</div>	

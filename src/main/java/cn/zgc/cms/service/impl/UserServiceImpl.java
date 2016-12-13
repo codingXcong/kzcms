@@ -1,4 +1,5 @@
 package cn.zgc.cms.service.impl;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import cn.zgc.cms.model.Pager;
 import cn.zgc.cms.model.Role;
 import cn.zgc.cms.model.User;
 import cn.zgc.cms.service.IUserService;
+import cn.zgc.cms.util.SecurityUtil;
 @Service
 public class UserServiceImpl implements IUserService{
 	@Autowired
@@ -34,6 +36,13 @@ public class UserServiceImpl implements IUserService{
 		User tu = userDao.loadByUsername(user.getUsername());
 		if(tu!=null)throw new CmsException("添加的用户对象已经存在，不能添加");
 		user.setCreateDate(new Date());
+		String md5Passwd = "";
+		try {
+			md5Passwd = SecurityUtil.md5(user.getUsername(), user.getPassword());
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		user.setPassword(md5Passwd);
 		userDao.add(user);
 		//添加角色对象
 		for(Integer rid:rids) {
@@ -64,8 +73,13 @@ public class UserServiceImpl implements IUserService{
 
 
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+		//TODO 需要进行用户是否有文章的判断
+
+		//1、删除用户管理的角色对象
+		userDao.deleteUserGroups(id);
+		//2、删除用户管理的组对象
+		userDao.deleteUserRoles(id);
+		userDao.delete(id);
 	}
 
 
@@ -99,9 +113,9 @@ public class UserServiceImpl implements IUserService{
 	}
 
 
-	public List<Role> listUserRoles(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Role> listUserRoles(int uid) {
+		List<Role> roles = userDao.listUserRoles(uid);
+		return roles;
 	}
 
 
@@ -114,6 +128,21 @@ public class UserServiceImpl implements IUserService{
 	public List<User> listGroupUsers(int gid) {
 		String hql = "select ug.user from UserGroup ug where ug.group.id=?";
 		return userDao.list(hql, gid);
+	}
+
+
+	@Override
+	public User login(String username, String password) {
+		User user = userDao.findByUserName(username);
+		if(user==null) throw new CmsException("用户名或者密码不正确");
+		try {
+			if(!SecurityUtil.md5(username, password).equals(user.getPassword()))
+				throw new CmsException("用户名或密码错误");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		if(user.getStatus()==0) throw new CmsException("用户已经停用，请与管理员联系");
+		return user;
 	}
 
 }

@@ -80,6 +80,14 @@ public interface IUserService {
 	 * @return
 	 */
 	public List<User> listGroupUsers(int gid);
+	
+	/**
+	 * 登录
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	public User login(String username, String password);
 
 	
 }
