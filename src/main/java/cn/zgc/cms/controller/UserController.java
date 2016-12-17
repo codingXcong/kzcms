@@ -1,5 +1,6 @@
 package cn.zgc.cms.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,6 +103,35 @@ public class UserController {
 		return "user/show";
 	}
 	
+	@RequestMapping("/showSelf")
+	public String showSelf(HttpSession session,Model model){
+		User user = (User) session.getAttribute("user");
+		model.addAttribute(user);
+		model.addAttribute("gs",userService.listUserGroups(user.getId()));
+		model.addAttribute("rs",userService.listUserRoles(user.getId()));
+		return "user/show";
+	}
 	
+	@RequestMapping(value="/updateSelf",method=RequestMethod.GET)
+	public String updateSelf(Model model,HttpSession session){
+		User u = (User) session.getAttribute("user");
+		if(u!=null)
+			model.addAttribute(new UserDto(u));
+		return "user/updateSelf";
+	}
+	
+	@RequestMapping(value="/updateSelf",method=RequestMethod.POST)
+	public String updateSelf(@Valid UserDto userDto,BindingResult br,Model model,HttpSession session){
+		if(br.hasErrors()){
+			return "user/updateSelf";
+		}
+		User ou = userService.load(userDto.getId());
+		ou.setNickname(userDto.getNickname());
+		ou.setPhone(userDto.getPhone());
+		ou.setEmail(userDto.getEmail());
+		userService.update(ou);
+		session.setAttribute("user", ou);
+		return "redirect:/admin/user/showSelf";
+	}
 	
 }

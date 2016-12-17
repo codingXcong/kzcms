@@ -89,5 +89,7 @@ public interface IUserService {
 	 */
 	public User login(String username, String password);
 
+	public void update(User ou);
+
 	
 }

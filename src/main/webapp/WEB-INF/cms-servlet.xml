@@ -23,11 +23,15 @@
 	</bean>
 	
  	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-		<property name="exceptionMappings">
+		<!-- <property name="exceptionMappings">
 			<props>
 				<prop key="cn.zg.cms.model.CmsException">error</prop>
 			</props>
-		</property>
+		</property> -->
+		
+		<property name="defaultErrorView">
+	       <value>error</value>
+	    </property>
 	</bean>
 	
 	<!-- <dwr:controller id="dwrController" debug="false"/>

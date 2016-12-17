@@ -25,10 +25,6 @@ public class UserDao extends BasicHibernateDaoImpl<User> implements IUserDao {
 		
 	}
 
-	public void updateStatus(int id) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public User loadByUsername(String username) {
 		// TODO Auto-generated method stub
@@ -104,6 +100,12 @@ public class UserDao extends BasicHibernateDaoImpl<User> implements IUserDao {
 	public List<Role> listUserRoles(int uid) {
 		String hql = "select ur.role from UserRole ur where ur.user.id=?";
 		return this.getSession().createQuery(hql).setParameter(0,uid).list();
+	}
+
+	@Override
+	public List<Group> listUserGroups(int userId) {
+		String hql = "select ug.group from UserGroup ug where ug.user.id=?";
+		return this.getSession().createQuery(hql).setParameter(0, userId).list();
 	}
 	
 }

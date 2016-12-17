@@ -90,8 +90,11 @@ public class UserServiceImpl implements IUserService{
 
 
 	public void updateStatus(int id) {
-		// TODO Auto-generated method stub
-		
+		User user = userDao.getByPk(id);
+		if(user==null) throw new CmsException("用户不存在");
+		if(user.getStatus()==0) user.setStatus(1);
+		else user.setStatus(0);
+		userDao.update(user);
 	}
 
 
@@ -120,8 +123,8 @@ public class UserServiceImpl implements IUserService{
 
 
 	public List<Group> listUserGroups(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Group> groups = userDao.listUserGroups(id);
+		return groups;
 	}
 
 
@@ -143,6 +146,13 @@ public class UserServiceImpl implements IUserService{
 		}
 		if(user.getStatus()==0) throw new CmsException("用户已经停用，请与管理员联系");
 		return user;
+	}
+
+
+	@Override
+	public void update(User ou) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

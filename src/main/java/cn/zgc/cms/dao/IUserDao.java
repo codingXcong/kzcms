@@ -19,11 +19,7 @@ public interface IUserDao extends IBasicHibernateDao<User>{
 	 * @param gids
 	 */
 	public void update(User user,Integer[] rids,Integer[] gids);
-	/**
-	 * 更新用户的状态
-	 * @param id
-	 */
-	public void updateStatus(int id);
+	
 	/**
 	 * 列表用户
 	 */
@@ -83,6 +79,8 @@ public interface IUserDao extends IBasicHibernateDao<User>{
 	 * @return
 	 */
 	public List<Role> listUserRoles(int uid);
+	
+	public List<Group> listUserGroups(int userId);
 	
 	
 }

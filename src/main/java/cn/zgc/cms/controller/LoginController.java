@@ -44,7 +44,7 @@ public class LoginController {
 			return "admin/login";
 		}
 		User loginUser = userService.login(username, password);
-		session.setAttribute("loginUser", loginUser);
+		session.setAttribute("user", loginUser);
 		List<Role> rs = userService.listUserRoles(loginUser.getId());
 		boolean isAdmin = isAdmin(rs);
 		session.setAttribute("isAdmin", isAdmin);
