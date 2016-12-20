@@ -13,7 +13,7 @@
 		</span>
 	</div>
 	<div id="remind">
-		<span id="showDate">,欢迎[${loginUser.nickname }]光临昭通市质量技术监督局后台管理程序。
+		<span id="showDate">欢迎[${user.nickname }]光临昭通市质量技术监督局后台管理程序。
 		</span>
 	</div>
 </div>

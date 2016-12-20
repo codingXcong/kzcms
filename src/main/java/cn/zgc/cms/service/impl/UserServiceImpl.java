@@ -151,7 +151,23 @@ public class UserServiceImpl implements IUserService{
 
 	@Override
 	public void update(User ou) {
-		// TODO Auto-generated method stub
+		userDao.update(ou);
+	}
+
+
+	@Override
+	public void updatePwd(int uid, String oldPwd, String newPwd) {
+		User user = userDao.getByPk(uid);
+		try {
+			if(!SecurityUtil.md5(user.getUsername(),oldPwd).equals(user.getPassword())) {
+				throw new CmsException("原始密码输入不正确");
+			}
+			user.setPassword(SecurityUtil.md5(user.getUsername(), newPwd));
+			userDao.update(user);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+			throw new CmsException("更新密码失败:"+e.getMessage());
+		}
 		
 	}
 

@@ -134,4 +134,18 @@ public class UserController {
 		return "redirect:/admin/user/showSelf";
 	}
 	
+	@RequestMapping(value="/updatePwd",method=RequestMethod.GET)
+	public String updatePwd(Model model,HttpSession session){
+		User u = (User) session.getAttribute("user");
+		if(u!=null)
+			model.addAttribute(new UserDto(u));
+		return "user/updatePwd";
+	}
+	
+	@RequestMapping(value="/updatePwd",method=RequestMethod.POST)
+	public String updatePwd(int id,String oldPwd,String password){
+		userService.updatePwd(id, oldPwd, password);
+		return "redirect:/admin/user/showSelf";
+	}
+	
 }

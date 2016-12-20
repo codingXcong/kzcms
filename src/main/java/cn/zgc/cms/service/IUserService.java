@@ -91,5 +91,12 @@ public interface IUserService {
 
 	public void update(User ou);
 
+	/**
+	 * 更新密码方法
+	 * @param uid
+	 * @param oldPwd
+	 * @param newPwd
+	 */
+	public void updatePwd(int uid,String oldPwd,String newPwd);
 	
 }
