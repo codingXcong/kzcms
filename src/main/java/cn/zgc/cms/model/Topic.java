@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /** 
@@ -143,14 +145,18 @@ public class Topic {
 	public void setCname(String cname) {
 		this.cname = cname;
 	}
-	@Column(name="cid")
+	//@Column(name="cid")
+	@ManyToOne
+	@JoinColumn(name="cid")
 	public Channel getChannel() {
 		return channel;
 	}
 	public void setChannel(Channel channel) {
 		this.channel = channel;
-	}
-	@Column(name="uid")
+	} 
+	//@Column(name="uid")
+	@ManyToOne
+	@JoinColumn(name="uid")
 	public User getUser() {
 		return user;
 	}

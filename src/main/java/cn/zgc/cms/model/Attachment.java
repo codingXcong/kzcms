@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /** 
@@ -104,6 +106,8 @@ public class Attachment{
 	public void setIsImg(int isImg) {
 		this.isImg = isImg;
 	}
+	@ManyToOne
+	@JoinColumn(name="tid")
 	public Topic getTopic() {
 		return topic;
 	}

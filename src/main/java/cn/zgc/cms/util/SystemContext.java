@@ -22,6 +22,15 @@ public class SystemContext {
 	 */
 	private static ThreadLocal<String> order = new ThreadLocal<String>();
 	
+	public static String getRealPath() {
+		return realPath.get();
+	}
+	public static void setRealPath(String _realPath) {
+		SystemContext.realPath.set(_realPath);
+	}
+	
+	private static ThreadLocal<String> realPath = new ThreadLocal<String>();
+	
 	public static Integer getPageSize() {
 		return pageSize.get();
 	}
@@ -63,4 +72,7 @@ public class SystemContext {
 		order.remove();
 	}
 	
+	public static void removeRealPath() {
+		realPath.remove();
+	}
 }
