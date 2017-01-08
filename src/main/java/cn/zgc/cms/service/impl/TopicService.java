@@ -100,14 +100,12 @@ public class TopicService implements ITopicService {
 
 	@Override
 	public Pager<Topic> find(Integer cid, String title, Integer status) {
-		// TODO Auto-generated method stub
-		return null;
+		return topicDao.find(cid, title, status);
 	}
 
 	@Override
 	public Pager<Topic> find(Integer uid, Integer cid, String title, Integer status) {
-		// TODO Auto-generated method stub
-		return null;
+		return topicDao.find(uid, cid, title, status);
 	}
 
 	@Override

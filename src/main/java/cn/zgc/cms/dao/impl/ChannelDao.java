@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import cn.zgc.cms.dao.IChannelDao;
 import cn.zgc.cms.model.Channel;
 import cn.zgc.cms.model.ChannelTree;
+import cn.zgc.cms.model.ChannelType;
 /**
  * 渠道dao
  * @author gc
@@ -58,6 +59,12 @@ public class ChannelDao extends BasicHibernateDaoImpl<Channel> implements IChann
 			sql = "select id,name,pid from t_channel where pid ="+pid+" order by orders";
 		}
 		return this.listBySQL(sql, ChannelTree.class, false);
+	}
+
+	@Override
+	public List<Channel> listPublishChannel() {
+		String hql = "select new Channel(c.id,c.name) from Channel c where c.status=0 and c.type!="+ChannelType.NAV.ordinal();
+		return this.list(hql);
 	}
 
 }

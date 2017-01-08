@@ -40,7 +40,7 @@ $(function(){
 		<a href="<%=request.getContextPath() %>/admin/channel/list" target="content">栏目信息管理</a>
 	</li>
 	<li class="navChild">
-		<a href="<%=request.getContextPath() %>/admin/article/publishs" target="content">文章信息管理</a>
+		<a href="<%=request.getContextPath() %>/admin/topic/audits" target="content">文章信息管理</a>
 	</li>
 </ul>
 	<ul class="navMenu">

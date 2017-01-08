@@ -30,5 +30,10 @@ public interface IChannelDao extends IBasicHibernateDao<Channel>{
 	 * @return
 	 */
 	public List<ChannelTree> generateTreeByParent(Integer pid);
+	/**
+	 * 所有的可以发布文章的栏目，栏目的状态必须为启用状态
+	 * @return
+	 */
+	public List<Channel> listPublishChannel();
 	
 }

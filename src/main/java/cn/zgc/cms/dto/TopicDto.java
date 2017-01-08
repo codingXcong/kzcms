@@ -103,7 +103,7 @@ public class TopicDto {
 		this.channelPicId = channelPicId;
 	}
 	
-	public String getPublishDate() {
+	public String getPublishDate() { 
 		return publishDate;
 	}
 	

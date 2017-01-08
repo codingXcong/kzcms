@@ -75,8 +75,7 @@ public class ChannelServiceImpl implements IChannelService {
 
 	@Override
 	public List<Channel> listPublishChannel() {
-		// TODO Auto-generated method stub
-		return null;
+		return channelDao.listPublishChannel();
 	}
 
 	@Override
